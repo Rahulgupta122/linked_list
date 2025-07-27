@@ -1,0 +1,93 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+class Node {
+    int data;
+    Node next;
+    Node(int data){
+        this.data=data;
+    }
+}
+class display{
+    Node head= null;
+    Node tail=null;
+    void insertatend(int data){
+        Node temp=new Node(data);
+        if(head==null){
+            head=temp;
+            tail=temp;
+        }
+        else{
+            tail.next=temp;
+            tail=temp;
+        }
+    }
+    
+    void insertatbeg(int data){
+        Node temp=new Node(data);
+        if(head==null){
+            head=temp;
+            tail=temp;
+        }
+        else{
+            temp.next=head;
+            head=temp;
+        }
+    }
+    int size(){
+        Node temp=head;
+        int count=0;
+        while(temp!=null){
+            count++;
+            temp=temp.next;
+        }
+        return count;
+    }
+    void insertatany(int idx,int data){
+        Node t=new Node(data);
+        Node temp=head;
+        if(idx==size()){
+            insertatend(data);
+            return;
+        }
+        else if(idx==0){
+            insertatbeg(data);
+        }
+        for(int i=1;i<=idx-1;i++){
+            temp=temp.next;
+        }
+        t.next=temp.next;
+        temp.next=t;
+    }
+    
+    void dir(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data+"->");
+            temp=temp.next;
+        }
+        System.out.print("null");
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+	    display d=new display();
+	    d.insertatany(0,1);
+	    d.insertatany(1,3);
+	    d.insertatany(2,7);
+	    d.insertatany(3,6);
+	    d.insertatany(4,5);
+	    d.insertatany(2,4);
+	    d.insertatany(0,0);
+	    d.insertatany(8,9);
+	    d.dir();
+	    System.out.println();
+	    System.out.println(d.tail.data);
+	    System.out.println(d.head.data);
+	}
+}

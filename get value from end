@@ -1,0 +1,65 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data=data;
+    }
+}
+class dis{
+    // in this method we do 2 iteration 
+    void meth1(Node head,int idx){
+        int size=0;
+        Node temp=head;
+        while(temp!=null){
+            size++;
+            temp=temp.next;
+            
+        }
+        temp=head;
+        int m=size-idx+1;
+        for(int i=1;i<=m-1;i++){
+            temp=temp.next;
+        }
+        System.out.print(temp.data);
+        
+    }
+    
+    // it is for 1 iteration
+    void meth2(Node head, int idx){
+        Node slow=head;
+        Node fast=head;
+        for(int i=0;i<idx;i++){
+            fast=fast.next;
+        }
+        while(fast!=null){
+            // slow=slow.next;
+            fast=fast.next;
+             slow=slow.next;
+        }
+        System.out.print(slow.data);
+    }
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+		Node a1=new Node(1);
+		Node a2=new Node(2);
+		Node a3=new Node(3);
+		Node a4=new Node(4);
+		Node a5=new Node(5);
+		a1.next=a2;
+		a2.next=a3;
+		a3.next=a4;
+		a4.next=a5;
+		dis d=new dis();
+		d.meth2(a1,2);
+	}
+}

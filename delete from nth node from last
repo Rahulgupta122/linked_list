@@ -1,0 +1,63 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data=data;
+    }
+}
+class dis{
+    
+    Node deleteNthnode(Node head,int idx){
+        Node slow =head;
+        Node fast=head;
+        for(int i=0;i<idx;i++){
+            fast=fast.next;
+        }
+        if(fast==null){
+            head=head.next;
+            return head;
+            
+        }
+        while(fast.next!=null){
+            slow=slow.next;
+            fast=fast.next;
+        }
+        slow.next=slow.next.next;
+        return head;
+    }
+    
+    void displ(Node head){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data+"->");
+            temp=temp.next;
+        }
+    }
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+		Node a1=new Node(1);
+		Node a2=new Node(2);
+		Node a3=new Node(3);
+		Node a4=new Node(4);
+		Node a5=new Node(5);
+		a1.next=a2;
+		a2.next=a3;
+		a3.next=a4;
+		a4.next=a5;
+		dis d=new dis();
+		d.displ(a1);
+		System.out.println();
+		a1=d.deleteNthnode(a1,1);
+		d.displ(a1);
+	}
+}

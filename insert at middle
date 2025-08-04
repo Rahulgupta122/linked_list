@@ -1,19 +1,20 @@
 /******************************************************************************
 
-                            Online Java Compiler.
-                Code, Compile, Run and Debug java program online.
-Write your code in this editor and press "Run" button to execute it.
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
 
 *******************************************************************************/
-class Node {
+class Node{
     int data;
     Node next;
     Node(int data){
         this.data=data;
     }
 }
-class display{
-    Node head= null;
+class insert{
+    Node head=null;
     Node tail=null;
     void insertatend(int data){
         Node temp=new Node(data);
@@ -26,9 +27,8 @@ class display{
             tail=temp;
         }
     }
-    
     void insertatbeg(int data){
-        Node temp=new Node(data);
+         Node temp=new Node(data);
         if(head==null){
             head=temp;
             tail=temp;
@@ -40,54 +40,56 @@ class display{
     }
     int size(){
         Node temp=head;
-        int count=0;
+        int cou=0;
         while(temp!=null){
-            count++;
+            cou++;
             temp=temp.next;
         }
-        return count;
+        return cou;
     }
-    void insertatany(int idx,int data){
-        Node t=new Node(data);
-        Node temp=head;
+    void insertatany(int data,int idx){
         if(idx==size()){
             insertatend(data);
             return;
         }
         else if(idx==0){
             insertatbeg(data);
+            return;
         }
-        for(int i=1;i<=idx-1;i++){
+        Node temp=head;
+        for(int i=1;i<idx-1;i++){
             temp=temp.next;
+            
         }
+        Node t=new Node(data);
         t.next=temp.next;
         temp.next=t;
+        
     }
-    
-    void dir(){
+    void dis(){
         Node temp=head;
         while(temp!=null){
             System.out.print(temp.data+"->");
             temp=temp.next;
         }
-        System.out.print("null");
     }
 }
 public class Main
 {
 	public static void main(String[] args) {
-	    display d=new display();
-	    d.insertatany(0,1);
-	    d.insertatany(1,3);
-	    d.insertatany(2,7);
-	    d.insertatany(3,6);
-	    d.insertatany(4,5);
-	    d.insertatany(2,4);
-	    d.insertatany(0,0);
-	    d.insertatany(8,9);
-	    d.dir();
-	    System.out.println();
-	    System.out.println(d.tail.data);
-	    System.out.println(d.head.data);
+		insert i=new insert();
+		i.insertatend(1);
+		i.insertatend(2);
+		i.insertatend(3);
+		i.insertatend(4);
+		i.insertatend(5);
+		i.dis();
+		System.out.println();
+		i.insertatbeg(6);
+		i.dis();
+		System.out.println();
+		i.insertatany(7,0);
+		i.dis();
+		
 	}
 }

@@ -1,0 +1,44 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+class Node{
+    
+    int data;
+    Node next;
+    Node(int data){
+        this.data=data;
+    }
+}
+public class Main
+{
+    public static void dis(Node head){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data+ "->");
+            temp=temp.next;
+        }
+    }
+    // recursive call
+    public static void disr(Node head){
+        Node temp=head;
+        if(temp==null)return;
+        System.out.print(temp.data+"->");
+        disr(temp.next);
+    }
+	public static void main(String[] args) {
+	    Node a=new Node(1);
+	    Node b=new Node(2);
+	    Node c=new Node(3);
+	    Node d=new Node(4);
+	    a.next=b;
+	    b.next=c;
+	    c.next=d;
+	    dis(a);
+	    System.out.println();
+	    disr(a);
+	}
+}
